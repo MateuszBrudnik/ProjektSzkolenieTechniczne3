@@ -1,0 +1,148 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CarServiceAPI</name>
+    </assembly>
+    <members>
+        <member name="T:CarsController">
+            <summary>
+            Kontroler zarządzający samochodami
+            </summary>
+        </member>
+        <member name="M:CarsController.GetCars">
+            <summary>
+            Pobiera listę wszystkich samochodów
+            </summary>
+            <returns>Lista samochodów</returns>
+        </member>
+        <member name="M:CarsController.GetCar(System.Int32)">
+            <summary>
+            Pobiera szczegóły samochodu po identyfikatorze
+            </summary>
+            <param name="id">Identyfikator samochodu</param>
+            <returns>Szczegóły samochodu</returns>
+        </member>
+        <member name="M:CarsController.PostCar(CarServiceAPI.DTOs.CreateCarDTO)">
+            <summary>
+            Dodaje nowy samochód
+            </summary>
+            <param name="carDTO">Dane samochodu</param>
+            <returns>Dodany samochód</returns>
+        </member>
+        <member name="M:CarsController.PutCar(System.Int32,CarServiceAPI.DTOs.UpdateCarDTO)">
+            <summary>
+            Aktualizuje dane samochodu
+            </summary>
+            <param name="id">Identyfikator samochodu</param>
+            <param name="carDTO">Dane samochodu</param>
+            <returns>Brak zawartości</returns>
+        </member>
+        <member name="M:CarsController.DeleteCar(System.Int32)">
+            <summary>
+            Usuwa samochód
+            </summary>
+            <param name="id">Identyfikator samochodu</param>
+            <returns>Brak zawartości</returns>
+        </member>
+        <member name="T:CustomersController">
+            <summary>
+            Kontroler zarządzający klientami
+            </summary>
+        </member>
+        <member name="M:CustomersController.GetCustomers">
+            <summary>
+            Pobiera listę wszystkich klientów
+            </summary>
+            <returns>Lista klientów</returns>
+        </member>
+        <member name="M:CustomersController.GetCustomer(System.Int32)">
+            <summary>
+            Pobiera szczegóły klienta po identyfikatorze
+            </summary>
+            <param name="id">Identyfikator klienta</param>
+            <returns>Szczegóły klienta</returns>
+        </member>
+        <member name="M:CustomersController.PostCustomer(CarServiceAPI.DTOs.CreateCustomerDTO)">
+            <summary>
+            Dodaje nowego klienta
+            </summary>
+            <param name="customerDTO">Dane klienta</param>
+            <returns>Dodany klient</returns>
+        </member>
+        <member name="M:CustomersController.PutCustomer(System.Int32,CarServiceAPI.DTOs.UpdateCustomerDTO)">
+            <summary>
+            Aktualizuje dane klienta
+            </summary>
+            <param name="id">Identyfikator klienta</param>
+            <param name="customerDTO">Dane klienta</param>
+            <returns>Brak zawartości</returns>
+        </member>
+        <member name="M:CustomersController.DeleteCustomer(System.Int32)">
+            <summary>
+            Usuwa klienta
+            </summary>
+            <param name="id">Identyfikator klienta</param>
+            <returns>Brak zawartości</returns>
+        </member>
+        <member name="T:RepairsController">
+            <summary>
+            Kontroler zarządzający naprawami
+            </summary>
+        </member>
+        <member name="M:RepairsController.GetRepairs">
+            <summary>
+            Pobiera listę wszystkich napraw
+            </summary>
+            <returns>Lista napraw</returns>
+        </member>
+        <member name="M:RepairsController.GetRepair(System.Int32)">
+            <summary>
+            Pobiera szczegóły naprawy po identyfikatorze
+            </summary>
+            <param name="id">Identyfikator naprawy</param>
+            <returns>Szczegóły naprawy</returns>
+        </member>
+        <member name="M:RepairsController.PostRepair(CarServiceAPI.DTOs.CreateRepairDTO)">
+            <summary>
+            Dodaje nową naprawę
+            </summary>
+            <param name="repairDTO">Dane naprawy</param>
+            <returns>Dodana naprawa</returns>
+        </member>
+        <member name="M:RepairsController.UploadFile(System.Int32,Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Przesyła plik do naprawy
+            </summary>
+            <param name="id">Identyfikator naprawy</param>
+            <param name="file">Plik do przesłania</param>
+            <returns>URL przesłanego pliku</returns>
+        </member>
+        <member name="M:RepairsController.PutRepair(System.Int32,CarServiceAPI.DTOs.UpdateRepairDTO)">
+            <summary>
+            Aktualizuje dane naprawy
+            </summary>
+            <param name="id">Identyfikator naprawy</param>
+            <param name="repairDTO">Dane naprawy</param>
+            <returns>Brak zawartości</returns>
+        </member>
+        <member name="M:RepairsController.DeleteRepair(System.Int32)">
+            <summary>
+            Usuwa naprawę
+            </summary>
+            <param name="id">Identyfikator naprawy</param>
+            <returns>Brak zawartości</returns>
+        </member>
+        <member name="T:CarServiceAPI.Migrations.Initial">
+            <inheritdoc />
+        </member>
+        <member name="M:CarServiceAPI.Migrations.Initial.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:CarServiceAPI.Migrations.Initial.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:CarServiceAPI.Migrations.Initial.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

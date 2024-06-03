@@ -1,0 +1,50 @@
+﻿<Properties StartupConfiguration="{4CCD80F9-DC2D-44CF-8D4B-0872E6D28992}|http">
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/RepairsController.cs">
+    <Files>
+      <File FileName="Controllers/CarsController.cs" Line="111" Column="1" />
+      <File FileName="Controllers/CustomersController.cs" Line="109" Column="1" />
+      <File FileName="Controllers/RepairsController.cs" Line="54" Column="28" />
+      <File FileName="CarServiceDbContext.cs" Line="7" Column="61" />
+      <File FileName="Models/Cars.cs" Line="1" Column="1" />
+      <File FileName="Models/Customer.cs" Line="1" Column="2" />
+      <File FileName="Models/Repair.cs" Line="20" Column="39" />
+      <File FileName="Services/AzureBlobService.cs" Line="17" Column="1" />
+      <File FileName="Services/CarService.cs" Line="12" Column="42" />
+      <File FileName="Services/CustomerService.cs" Line="1" Column="1" />
+      <File FileName="Program.cs" Line="48" Column="2" />
+      <File FileName="Services/RepairService.cs" Line="1" Column="1" />
+      <File FileName="WeatherForecast.cs" Line="1" Column="1" />
+      <File FileName="Controllers/WeatherForecastController.cs" Line="1" Column="1" />
+      <File FileName="DTOs/CustomerDTO.cs" Line="10" Column="6" />
+      <File FileName="DTOs/CarDTO.cs" Line="7" Column="27" />
+      <File FileName="DTOs/RepairDTO.cs" Line="11" Column="6" />
+      <File FileName="DTOs/CreateCustomerDTO.cs" Line="9" Column="1" />
+      <File FileName="DTOs/CreateCarDto.cs" Line="10" Column="6" />
+      <File FileName="DTOs/CreateRepairDTO.cs" Line="9" Column="6" />
+      <File FileName="DTOs/UpdateCarDto.cs" Line="10" Column="6" />
+      <File FileName="DTOs/UpdateCustomerDTO.cs" Line="8" Column="6" />
+      <File FileName="DTOs/UpdateRepairDTO.cs" Line="4" Column="5" />
+      <File FileName="appsettings.json" Line="6" Column="148" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="CarServiceAPI" expanded="True">
+            <Node name="CarServiceAPI" expanded="True">
+              <Node name="Controllers" expanded="True">
+                <Node name="RepairsController.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.CarServiceAPI PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
+</Properties>
