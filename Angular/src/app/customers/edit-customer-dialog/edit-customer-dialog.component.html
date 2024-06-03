@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Edytuj Klienta</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.name" placeholder="Imie/Nazwisko">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.email" placeholder="Email">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Anuluj</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Zapisz</button>
+</div>

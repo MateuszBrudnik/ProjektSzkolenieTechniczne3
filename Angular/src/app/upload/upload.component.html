@@ -1,0 +1,10 @@
+<mat-card>
+  <mat-card-title>Przelij plik</mat-card-title>
+  <mat-card-content>
+    <input type="file" (change)="handleFileInput($event)" />
+    <button mat-raised-button color="primary" (click)="uploadFileToActivity()">Przelij</button>
+    <div *ngIf="uploadedFileUrl">
+      <p>File uploaded successfully. <a [href]="uploadedFileUrl" target="_blank">View File</a></p>
+    </div>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>Edytuj Samochód</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.make" placeholder="Producent">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.model" placeholder="Model">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.year" placeholder="Rok produkcji" type="number">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select [(ngModel)]="data.customerId" placeholder="Wlasciciel">
+      <mat-option *ngFor="let customer of data.customers" [value]="customer.id">{{ customer.name }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Anuluj</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Zapisz</button>
+</div>

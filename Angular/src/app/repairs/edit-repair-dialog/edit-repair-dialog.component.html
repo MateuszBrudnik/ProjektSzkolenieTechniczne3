@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>Edytuj Naprawę</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.description" placeholder="Opis">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.date" placeholder="Data" type="date">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select [(ngModel)]="data.carId" placeholder="Samochód">
+      <mat-option *ngFor="let car of data.cars" [value]="car.id">{{ car.make }} {{ car.model }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Anuluj</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Zapisz</button>
+</div>
