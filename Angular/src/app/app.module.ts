@@ -23,6 +23,7 @@ import { RepairsComponent } from './repairs/repairs.component';
 import { EditCustomerDialogComponent } from './customers/edit-customer-dialog/edit-customer-dialog.component';
 import { EditCarDialogComponent } from './cars/edit-car-dialog/edit-car-dialog.component';
 import { EditRepairDialogComponent } from './repairs/edit-repair-dialog/edit-repair-dialog.component';
+import { UploadDialogComponent } from './upload-dialog/upload-dialog.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { EditRepairDialogComponent } from './repairs/edit-repair-dialog/edit-rep
     RepairsComponent,
     EditCustomerDialogComponent,
     EditCarDialogComponent,
-    EditRepairDialogComponent
+    EditRepairDialogComponent,
+    UploadDialogComponent
   ],
   imports: [
     BrowserModule,

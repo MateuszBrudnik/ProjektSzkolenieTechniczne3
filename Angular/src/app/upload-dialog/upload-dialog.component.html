@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Prześlij plik</h1>
+<div mat-dialog-content>
+  <input type="file" (change)="onFileSelected($event)" />
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Anuluj</button>
+  <button mat-button (click)="onUpload()" [disabled]="!selectedFile">Prześlij</button>
+</div>

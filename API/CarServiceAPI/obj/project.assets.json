@@ -2261,11 +2261,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/mateuszbrudnik/Projects/CarServiceAPI/CarServiceAPI.csproj",
+      "projectUniqueName": "/Users/mateuszbrudnik/Documents/wsiiz/SzkolenieT3/Projekt/ProjektSzkolenieTechniczne3/API/CarServiceAPI/CarServiceAPI.csproj",
       "projectName": "CarServiceAPI",
-      "projectPath": "/Users/mateuszbrudnik/Projects/CarServiceAPI/CarServiceAPI.csproj",
+      "projectPath": "/Users/mateuszbrudnik/Documents/wsiiz/SzkolenieT3/Projekt/ProjektSzkolenieTechniczne3/API/CarServiceAPI/CarServiceAPI.csproj",
       "packagesPath": "/Users/mateuszbrudnik/.nuget/packages/",
-      "outputPath": "/Users/mateuszbrudnik/Projects/CarServiceAPI/obj/",
+      "outputPath": "/Users/mateuszbrudnik/Documents/wsiiz/SzkolenieT3/Projekt/ProjektSzkolenieTechniczne3/API/CarServiceAPI/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/mateuszbrudnik/.nuget/NuGet/NuGet.Config"
@@ -2274,6 +2274,7 @@
         "net7.0"
       ],
       "sources": {
+        "/usr/local/share/dotnet/sdk/7.0.316/Sdks/Microsoft.NET.Sdk.Web/library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -2286,11 +2287,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -2353,7 +2349,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.201/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.316/RuntimeIdentifierGraph.json"
       }
     }
   }

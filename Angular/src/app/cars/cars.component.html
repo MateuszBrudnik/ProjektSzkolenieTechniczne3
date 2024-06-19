@@ -1,9 +1,9 @@
 <mat-card>
   <mat-card-title>Samochody</mat-card-title>
-  <mat-card-content>
-    <table mat-table [dataSource]="cars" class="mat-elevation-z8">
+  <mat-card-content class="table-container">
+    <table mat-table [dataSource]="cars" class="mat-elevation-z8" style="width: 100%;">
       <ng-container matColumnDef="make">
-        <th mat-header-cell *matHeaderCellDef> Producent </th>
+        <th mat-header-cell *matHeaderCellDef> Marka </th>
         <td mat-cell *matCellDef="let element"> {{element.make}} </td>
       </ng-container>
 
@@ -13,17 +13,17 @@
       </ng-container>
 
       <ng-container matColumnDef="year">
-        <th mat-header-cell *matHeaderCellDef> Rok produkcji </th>
+        <th mat-header-cell *matHeaderCellDef> Rok </th>
         <td mat-cell *matCellDef="let element"> {{element.year}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="owner">
-        <th mat-header-cell *matHeaderCellDef> Własciciel </th>
+      <ng-container matColumnDef="customer">
+        <th mat-header-cell *matHeaderCellDef> Właściciel </th>
         <td mat-cell *matCellDef="let element"> {{element.customer.name}} </td>
       </ng-container>
 
       <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef> Czynnosci </th>
+        <th mat-header-cell *matHeaderCellDef> Czynności </th>
         <td mat-cell *matCellDef="let element">
           <button mat-icon-button color="primary" (click)="editCar(element)">
             <mat-icon>edit</mat-icon>
@@ -39,7 +39,7 @@
     </table>
 
     <mat-form-field>
-      <input matInput placeholder="Producent" #carMake>
+      <input matInput placeholder="Marka" #carMake>
     </mat-form-field>
     <mat-form-field>
       <input matInput placeholder="Model" #carModel>
@@ -48,7 +48,8 @@
       <input matInput placeholder="Rok produkcji" #carYear type="number">
     </mat-form-field>
     <mat-form-field>
-      <mat-select placeholder="Własciciel" #carCustomer>
+
+      <mat-select placeholder="Właściciel" #carCustomer>
         <mat-option *ngFor="let customer of customers" [value]="customer.id">{{ customer.name }}</mat-option>
       </mat-select>
     </mat-form-field>

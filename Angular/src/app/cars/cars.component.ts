@@ -9,44 +9,52 @@ import { EditCarDialogComponent } from './edit-car-dialog/edit-car-dialog.compon
   styleUrls: ['./cars.component.css']
 })
 export class CarsComponent implements OnInit {
-  displayedColumns: string[] = ['make', 'model', 'year', 'owner', 'actions'];
   cars: any[] = [];
   customers: any[] = [];
+  displayedColumns: string[] = ['make', 'model', 'year', 'customer', 'actions'];
 
-  constructor(private apiService: ApiService, public dialog: MatDialog) { }
+  constructor(private apiService: ApiService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
-    this.apiService.cars$.subscribe(data => {
+    this.loadCars();
+    this.loadCustomers();
+  }
+
+  loadCars(): void {
+    this.apiService.getCars().subscribe(data => {
       this.cars = data;
     });
-    this.apiService.customers$.subscribe(data => {
+  }
+
+  loadCustomers(): void {
+    this.apiService.getCustomers().subscribe(data => {
       this.customers = data;
     });
   }
 
-  addCar(make: string, model: string, year: string, customerId: string) {
-    const newCar = { make, model, year: parseInt(year, 10), customerId: parseInt(customerId, 10) };
+  addCar(make: string, model: string, year: string, customerId: string): void {
+    const newCar = { make, model, year: parseInt(year), customerId: parseInt(customerId) };
     this.apiService.createCar(newCar).subscribe(() => {
-      this.apiService.loadCars();
+      this.loadCars();
     });
   }
 
-  deleteCar(id: number) {
+  deleteCar(id: number): void {
     this.apiService.deleteCar(id).subscribe(() => {
-      this.apiService.loadCars();
+      this.loadCars();
     });
   }
 
-  editCar(car: any) {
+  editCar(car: any): void {
     const dialogRef = this.dialog.open(EditCarDialogComponent, {
-      width: '250px',
-      data: { ...car, customers: this.customers }
+      width: '400px',
+      data: car
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.apiService.updateCar(result.id, result).subscribe(() => {
-          this.apiService.loadCars();
+          this.loadCars();
         });
       }
     });

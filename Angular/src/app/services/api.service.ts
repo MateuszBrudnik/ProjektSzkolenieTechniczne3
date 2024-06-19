@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,91 +8,63 @@ import { Observable, BehaviorSubject } from 'rxjs';
 export class ApiService {
   private baseUrl = 'http://localhost:5296/api';
 
-  private customersSubject = new BehaviorSubject<any[]>([]);
-  customers$ = this.customersSubject.asObservable();
+  constructor(private http: HttpClient) {}
 
-  private carsSubject = new BehaviorSubject<any[]>([]);
-  cars$ = this.carsSubject.asObservable();
-
-  constructor(private http: HttpClient) {
-    this.loadCustomers();
-    this.loadCars();
-  }
-
-  // Customers
-  loadCustomers() {
-    this.getCustomers().subscribe(data => this.customersSubject.next(data));
-  }
-
-  getCustomers(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/customers`);
-  }
-
-  getCustomer(id: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}/customers/${id}`);
-  }
-
-  createCustomer(customer: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/customers`, customer);
-  }
-
-  updateCustomer(id: number, customer: any): Observable<any> {
-    return this.http.put(`${this.baseUrl}/customers/${id}`, customer);
-  }
-
-  deleteCustomer(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/customers/${id}`);
-  }
-
-  // Cars
-  loadCars() {
-    this.getCars().subscribe(data => this.carsSubject.next(data));
-  }
-
-  getCars(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/cars`);
-  }
-
-  getCar(id: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}/cars/${id}`);
+  // Methods for Cars
+  getCars(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/cars`);
   }
 
   createCar(car: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/cars`, car);
-  }
-
-  updateCar(id: number, car: any): Observable<any> {
-    return this.http.put(`${this.baseUrl}/cars/${id}`, car);
+    return this.http.post<any>(`${this.baseUrl}/cars`, car);
   }
 
   deleteCar(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/cars/${id}`);
+    return this.http.delete<any>(`${this.baseUrl}/cars/${id}`);
   }
 
-  // Repairs
-  getRepairs(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/repairs`);
+  updateCar(id: number, car: any): Observable<any> {
+    return this.http.put<any>(`${this.baseUrl}/cars/${id}`, car);
   }
 
-  getRepair(id: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}/repairs/${id}`);
+  // Methods for Customers
+  getCustomers(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/customers`);
+  }
+
+  createCustomer(customer: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/customers`, customer);
+  }
+
+  deleteCustomer(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}/customers/${id}`);
+  }
+
+  updateCustomer(id: number, customer: any): Observable<any> {
+    return this.http.put<any>(`${this.baseUrl}/customers/${id}`, customer);
+  }
+
+  // Methods for Repairs
+  getRepairs(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/repairs`);
   }
 
   createRepair(repair: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/repairs`, repair);
-  }
-
-  updateRepair(id: number, repair: any): Observable<any> {
-    return this.http.put(`${this.baseUrl}/repairs/${id}`, repair);
+    return this.http.post<any>(`${this.baseUrl}/repairs`, repair);
   }
 
   deleteRepair(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/repairs/${id}`);
+    return this.http.delete<any>(`${this.baseUrl}/repairs/${id}`);
   }
 
-  uploadRepairFile(id: number, file: File): Observable<any> {
-    const formData: FormData = new FormData();
-    formData.append('file', file, file.name);
-    return this.http.post(`${this.baseUrl}/repairs/${id}/upload`, formData);
+  updateRepair(id: number, repair: any): Observable<any> {
+    return this.http.put<any>(`${this.baseUrl}/repairs/${id}`, repair);
+  }
+
+  uploadRepairFile(repairId: number, file: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    return this.http.post<any>(`${this.baseUrl}/repairs/${repairId}/upload`, formData);
   }
 }

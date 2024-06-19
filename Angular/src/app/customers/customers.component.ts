@@ -9,40 +9,44 @@ import { EditCustomerDialogComponent } from './edit-customer-dialog/edit-custome
   styleUrls: ['./customers.component.css']
 })
 export class CustomersComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'email', 'actions'];
   customers: any[] = [];
+  displayedColumns: string[] = ['name', 'email', 'actions'];
 
-  constructor(private apiService: ApiService, public dialog: MatDialog) { }
+  constructor(private apiService: ApiService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
-    this.apiService.customers$.subscribe(data => {
+    this.loadCustomers();
+  }
+
+  loadCustomers(): void {
+    this.apiService.getCustomers().subscribe(data => {
       this.customers = data;
     });
   }
 
-  addCustomer(name: string, email: string) {
+  addCustomer(name: string, email: string): void {
     const newCustomer = { name, email };
     this.apiService.createCustomer(newCustomer).subscribe(() => {
-      this.apiService.loadCustomers();
+      this.loadCustomers();
     });
   }
 
-  deleteCustomer(id: number) {
+  deleteCustomer(id: number): void {
     this.apiService.deleteCustomer(id).subscribe(() => {
-      this.apiService.loadCustomers();
+      this.loadCustomers();
     });
   }
 
-  editCustomer(customer: any) {
+  editCustomer(customer: any): void {
     const dialogRef = this.dialog.open(EditCustomerDialogComponent, {
-      width: '250px',
-      data: { ...customer }
+      width: '400px',
+      data: customer
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.apiService.updateCustomer(result.id, result).subscribe(() => {
-          this.apiService.loadCustomers();
+          this.loadCustomers();
         });
       }
     });

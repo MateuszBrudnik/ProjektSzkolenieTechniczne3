@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { MatDialog } from '@angular/material/dialog';
-import { EditRepairDialogComponent } from './edit-repair-dialog/edit-repair-dialog.component';
+import { UploadDialogComponent } from '../upload-dialog/upload-dialog.component';
+import {EditRepairDialogComponent} from "./edit-repair-dialog/edit-repair-dialog.component";
 
 @Component({
   selector: 'app-repairs',
@@ -9,42 +10,46 @@ import { EditRepairDialogComponent } from './edit-repair-dialog/edit-repair-dial
   styleUrls: ['./repairs.component.css']
 })
 export class RepairsComponent implements OnInit {
-  displayedColumns: string[] = ['description', 'date', 'car', 'actions'];
   repairs: any[] = [];
   cars: any[] = [];
+  displayedColumns: string[] = ['description', 'date', 'car', 'file', 'actions'];
 
-  constructor(private apiService: ApiService, public dialog: MatDialog) { }
+  constructor(private apiService: ApiService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.loadRepairs();
-    this.apiService.cars$.subscribe(data => {
-      this.cars = data;
-    });
+    this.loadCars();
   }
 
-  loadRepairs() {
+  loadRepairs(): void {
     this.apiService.getRepairs().subscribe(data => {
       this.repairs = data;
     });
   }
 
-  addRepair(description: string, date: string, carId: string) {
-    const newRepair = { description, date, carId: parseInt(carId, 10) };
+  loadCars(): void {
+    this.apiService.getCars().subscribe(data => {
+      this.cars = data;
+    });
+  }
+
+  addRepair(description: string, date: string, carId: number): void {
+    const newRepair = { description, date, carId };
     this.apiService.createRepair(newRepair).subscribe(() => {
       this.loadRepairs();
     });
   }
 
-  deleteRepair(id: number) {
+  deleteRepair(id: number): void {
     this.apiService.deleteRepair(id).subscribe(() => {
       this.loadRepairs();
     });
   }
 
-  editRepair(repair: any) {
+  editRepair(repair: any): void {
     const dialogRef = this.dialog.open(EditRepairDialogComponent, {
-      width: '250px',
-      data: { ...repair, cars: this.cars }
+      width: '400px',
+      data: repair
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -52,6 +57,19 @@ export class RepairsComponent implements OnInit {
         this.apiService.updateRepair(result.id, result).subscribe(() => {
           this.loadRepairs();
         });
+      }
+    });
+  }
+
+  openUploadDialog(repairId: number): void {
+    const dialogRef = this.dialog.open(UploadDialogComponent, {
+      width: '400px',
+      data: { repairId }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.loadRepairs();
       }
     });
   }
